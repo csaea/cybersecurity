@@ -5,8 +5,8 @@ import hashlib
 
 # SHA-256 on one password
 
-password = "monkey100?"                      # fake password
-# hashlib needs bytes, not str. tandard rule for turning text characters into bytes
+password = "monkey100?"                      
+# hashlib needs bytes, not a string. UTF-8 is the standard rule for turning text characters into bytes
 data = password.encode("utf-8")           
 digest = hashlib.md5(data).hexdigest()
 
