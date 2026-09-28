@@ -1,164 +1,80 @@
 # Capture The Flag — Resources
 
-## Kali Linux Environment 
+## Environment
+| Resource | Does | Link |
+|---|---|---|
+| CYBER.ORG Kali VM | Browser-based Kali, no install | [portal.cyber.org](https://portal.cyber.org/) |
+| Kali Linux | OS preloaded with CTF tools; best for hard challenges | [kali.org](https://www.kali.org/) |
 
-CTF challenges can be solved using most computers with basic privileges. 
-However, CTF challenges are **best** solved in Kali Linux, which comes with all the tools you may need (especially for the harder challenges). 
-
-* **CYBER.ORG Kali Linux VM**
-  [https://apps.cyber.org/](https://apps.cyber.org/)
-
-* **Official Kali Linux**
-  [https://www.kali.org/](https://www.kali.org/)
-
-
-## Practice CTF Platforms
-
-* **WarmupCTF** — easy beginner CTF challenges
-  [https://warmup.ctfd.io/challenges](https://warmup.ctfd.io/challenges)
-
-* **316CTF** — practice CTF
-  [https://play.316ctf.com/challenges](https://play.316ctf.com/challenges)
-
-* **picoCTF Practice (picoGym)** — beginner → advanced challenges
-  [https://play.picoctf.org/practice](https://play.picoctf.org/practice)
-  [https://picoctf.org/](https://picoctf.org/)
-
+## Practice Platforms
+| Platform | Does | Link |
+|---|---|---|
+| CyLab Security Academy | CMU's picoCTF successor; 490+ challenges, learning paths, browser webshell | [cylabacademy.org](https://cylabacademy.org/) |
+| WarmupCTF | Easy beginner challenges | [warmup.ctfd.io](https://warmup.ctfd.io/challenges) |
+| 316CTF | General practice | [play.316ctf.com](https://play.316ctf.com/challenges) |
 
 ---
 
-# Challenge Categories, Tools, and Tips
+## Cryptography & Encoding
+| Tool | Does | Example |
+|---|---|---|
+| [CyberChef](https://gchq.github.io/CyberChef/) | Chain decoders | `From Base64` → `From Hex` |
+| [CYBER.ORG Tools](https://tools.cyber.org/dashboard) | Common decoders in one place | Paste text → pick decoder |
+| [HexEd.it](https://hexed.it/) | View/edit raw bytes | Check file header bytes |
+| [Binwalk](https://github.com/ReFirmLabs/binwalk) | Find/extract embedded files | `binwalk -e image.png` |
+| [Steghide](http://steghide.sourceforge.net/) | Extract data hidden in images/audio | `steghide extract -sf pic.jpg` |
 
----
-
-## General Tips
-
-* Start with easier challenges and increase difficulty gradually.
-* Keep structured notes on commands and tool usage.
-* Divide responsibilities within teams.
-* Read the entire problem before attempting a solution.
-* Verify findings before submitting flags.
-
----
-
-## Crypto & Encoding
-
-**Tools**
-
-* Common Tools -- [https://tools.cyber.org/dashboard](https://tools.cyber.org/dashboard)
-* CyberChef — [https://gchq.github.io/CyberChef/](https://gchq.github.io/CyberChef/)
-* Hex Editor (online) — [https://hexed.it/](https://hexed.it/)
-* Binwalk — [https://github.com/ReFirmLabs/binwalk](https://github.com/ReFirmLabs/binwalk)
-* Steghide — [http://steghide.sourceforge.net/](http://steghide.sourceforge.net/)
-
-**Tips**
-
-* Test common encodings first (Base64, hex, binary).
-* If text looks shifted, try Caesar or Vigenère.
-* Inspect suspicious files with `strings` and a hex editor.
-* Extract embedded files using binwalk when appropriate.
-
----
+**Tips:** Try Base64, hex, binary first · Shifted text → Caesar/Vigenère · Odd file → `strings`, hex editor, `binwalk`
 
 ## Digital Forensics
+| Tool | Does | Example |
+|---|---|---|
+| `file` | Identify true file type | `file mystery` |
+| [`strings`](https://linux.die.net/man/1/strings) | Pull readable text | `strings mystery \| grep pico` |
+| [ExifTool](https://exiftool.org/) | Read metadata | `exiftool photo.jpg` |
+| `ls -la`, `grep` | Inspect files, search text | `grep -r "flag" .` |
 
-**Tools**
-
-* ExifTool — [https://exiftool.org/](https://exiftool.org/)
-* Strings — [https://linux.die.net/man/1/strings](https://linux.die.net/man/1/strings)
-* Linux commands: `ls`, `file`, `grep`
-
-**Tips**
-
-* Always verify file type using `file`.
-* Extract readable content with `strings`.
-* Examine metadata for hidden clues.
-* Look for unusual timestamps or embedded artifacts.
-
----
+**Tips:** Always run `file` first · Check metadata and odd timestamps
 
 ## Networking
-
-**Tools**
-
-* Wireshark — [https://www.wireshark.org/](https://www.wireshark.org/)
-* `nslookup`
-* `whois` (command line)
-* ICANN Lookup — [https://lookup.icann.org/en](https://lookup.icann.org/en)
-* Whois.com — [https://www.whois.com/whois/](https://www.whois.com/whois/)
-
-**Tips**
-
-* Filter Wireshark captures by protocol.
-* Follow TCP streams to reconstruct communication.
-* Use `nslookup` to resolve domains and IP addresses.
-* Investigate registration details using ICANN or Whois.com.
-* Check nameservers, registrar, and creation dates.
-
----
+| Tool | Does | Example |
+|---|---|---|
+| [Wireshark](https://www.wireshark.org/) | Inspect packet captures | Filter `http`, Follow → TCP Stream |
+| `nslookup` | Domain ↔ IP | `nslookup example.com` |
+| `whois` | Domain registration info | `whois example.com` |
+| [ICANN Lookup](https://lookup.icann.org/en) / [Whois.com](https://www.whois.com/whois/) | Web-based whois | Check registrar, nameservers, creation date |
 
 ## Web Exploitation
+| Tool | Does | Example |
+|---|---|---|
+| Browser DevTools (F12) | View source, requests, cookies | Network tab → inspect response |
+| [Burp Suite CE](https://portswigger.net/burp) | Intercept and replay requests | Edit a parameter → Repeater → Send |
 
-**Tools**
+**Tips:** Inspect cookies/tokens · Test inputs for hidden behavior
 
-* Burp Suite (Community Edition) — [https://portswigger.net/burp](https://portswigger.net/burp)
-* Browser Developer Tools (built into Chrome/Firefox)
+## Password Cracking
+| Tool | Does | Example |
+|---|---|---|
+| [hashid](https://github.com/psypanda/hashid) | Identify hash type | `hashid '5f4dcc3b…'` |
+| [John the Ripper](http://www.openwall.com/john/) | Crack hashes with wordlists | `john --wordlist=rockyou.txt hash.txt` |
+| [CVE.org](https://www.cve.org/) | Look up known vulnerabilities | Search `CVE-2021-44228` |
 
-**Tips**
-
-* Use the Network tab to observe requests and responses.
-* Intercept requests in Burp to modify parameters.
-* Test input fields for hidden functionality.
-* Inspect cookies and session tokens.
-* Replay modified requests using Burp Repeater.
-
----
-
-## Password Cracking & Cybersecurity
-
-**Tools**
-
-* John the Ripper — [http://www.openwall.com/john/](http://www.openwall.com/john/)
-* hashid — [https://github.com/psypanda/hashid](https://github.com/psypanda/hashid)
-* Common Vulnerabilities and Exposures -- [https://www.cve.org/](https://www.cve.org/)
-
-**Tips**
-
-* Identify hash type before cracking.
-* Use common wordlists first.
-* Understand that strong hashes may not be feasible to crack.
-* Research referenced vulnerabilities (CVE) if applicable.
-
----
+**Tips:** Identify before cracking · Common wordlists first · Strong hashes may be infeasible
 
 ## Programming & Scripting
+| Resource | Does | Example |
+|---|---|---|
+| [Python docs](https://docs.python.org/3/library/index.html) | Automate decoding/parsing | `python3 -c "print(chr(112))"` |
+| [SQL basics](https://www.w3schools.com/sql/) | Understand queries/injection | `SELECT * FROM users;` |
+| [Bash scripting](https://linuxcommand.org/lc3_writing_shell_scripts.php) | Script repetitive commands | `for f in *; do strings $f; done` |
 
-**Tools / References**
+**Tips:** Break problems into steps · Print intermediate output
 
-* Python — [https://www.python.org/](https://docs.python.org/3.14/library/index.html)
-* SQL basics — [https://www.w3schools.com/sql/](https://www.w3schools.com/sql/)
-* Bash / Linux Command Line Guide — [https://linuxcommand.org/tlcl.php](https://linuxcommand.org/lc3_writing_shell_scripts.php)
+## OSINT
+| Tool | Does | Example |
+|---|---|---|
+| [Google operators](https://ahrefs.com/blog/google-advanced-search-operators/) | Refine searches | `site:example.com filetype:pdf` |
+| [OSINT Framework](https://osintframework.com/) | Directory of OSINT tools | Browse by data type |
 
-**Tips**
-
-* Break problems into smaller steps before coding.
-* Print intermediate output to debug.
-* Watch for input validation weaknesses.
-* Automate repetitive decoding or parsing tasks.
-
----
-
-## OSINT & Investigation
-
-**Tools**
-
-* Search engines and official documentation
-* Google Advanced Search Operators (Google Dorking) — [https://ahrefs.com/blog/google-advanced-search-operators/](https://ahrefs.com/blog/google-advanced-search-operators/)
-* OSINT Framework — [https://osintframework.com/](https://osintframework.com/)
-
-**Tips**
-
-* Use quotation marks for exact-phrase searches.
-* Verify authenticity of discovered data.
-* Use advanced Google operators (`site:`, `filetype:`, `intitle:`, `inurl:`) to refine queries and surface indexed but non-obvious content.
+**Tips:** Quote exact phrases · Verify sources
 

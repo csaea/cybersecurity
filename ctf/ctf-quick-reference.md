@@ -1,37 +1,38 @@
 This Quick Reference is based on CyLab Security Academy's General Skills in CTFs.
+Refer to [CTF-Resources](ctf-resources) for online tools.
 
 **Navigation**
 | Command | Does | Example |
 |---|---|---|
 | `ls` / `ls -la` | List files; `-la` shows hidden files and permissions | `ls -la ~/challenge` |
-| `cd` | Enter dir, go up (`..`), root (`/`), home (`~`) | `cd ../drop-in` |
-| `pwd` | Show current location | `pwd` → `/home/ctf-player` |
+| `cd` | Enter dir, go up (`..`), root (`/`), home (`~`) | `cd /home/kali/Documents` |
+| `pwd` | Show current location | `pwd` → `/home/kali/Downloads` |
 | **Tab** | Autocomplete; press twice to list options | `cd Add` + Tab → `cd Addadshashanammu/` |
 
 **Files**
 | Command | Does | Example |
 |---|---|---|
-| `cat` | Print a file | `cat flag.txt` |
-| `nano` | Edit (Ctrl+O save, Ctrl+X exit) | `nano notes.txt` |
+| `cat` | Print a file in Terminal | `cat flag.txt` |
+| `nano` | Edit text (Ctrl+O save, Ctrl+X exit) | `nano calc.py` |
 | `wget` | Download a file | `wget https://example.com/flag` |
 | `unzip` | Extract an archive | `unzip files.zip` |
 
 **Running programs**
 | Command | Does | Example |
 |---|---|---|
-| `chmod +x` | Grant execute permission | `chmod +x warm` |
-| `./` | Run a program in the current folder | `./warm` |
-| `python3` | Run a Python script | `python3 ende.py -d flag.txt.en` |
-| `-h` | Show help/options | `./warm -h` |
+| `chmod +x` | Grant execute permission for a binary | `chmod +x myExecutable` |
+| `./` | Run a program in the current folder | `./myExecutable` |
+| `python3` | Run a Python script (with or without options) | `python3 ende.py` |
+| `-h` | Show help/options | `./warm -h`, `./calc.py -vO` |
 
 **Searching**
 | Command | Does | Example |
 |---|---|---|
-| `grep` | Find text in a file | `grep "picoCTF" file` |
-| `grep -r` | Search every file below here | `grep -r "picoCTF" .` |
+| `grep` | Find specific text in a file | `grep "London" file` |
+| `grep -r` | -r Recursive searches every file in every directory below current | `grep -r "picoCTF" .` |
 | `find` | Locate files by name | `find . -name "*flag*"` |
 | `strings` | Extract readable text from a binary | `strings program` |
-| `\|` | Pipe output into another command | `strings program \| grep pico` |
+| `\|` | Pipe takes the output of one command and plugs it into another command | `strings program \| grep pico` |
 
 **Remote connections**
 | Command | Does | Example |
