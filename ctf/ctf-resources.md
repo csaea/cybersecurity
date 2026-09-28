@@ -30,7 +30,7 @@
 | Tool | Does | Example |
 |---|---|---|
 | `file` | Identify true file type | `file mystery` |
-| [`strings`](https://linux.die.net/man/1/strings) | Pull readable text | `strings mystery \| grep pico` |
+| `strings` | Pull readable text | `strings mystery \| grep pico` |
 | [ExifTool](https://exiftool.org/) | Read metadata | `exiftool photo.jpg` |
 | `ls -la`, `grep` | Inspect files, search text | `grep -r "flag" .` |
 
@@ -56,7 +56,7 @@
 | Tool | Does | Example |
 |---|---|---|
 | [hashid](https://github.com/psypanda/hashid) | Identify hash type | `hashid '5f4dcc3b…'` |
-| [John the Ripper](http://www.openwall.com/john/) | Crack hashes with wordlists | `john --wordlist=rockyou.txt hash.txt` |
+| [John the Ripper](http://www.openwall.com/john/) | Crack hashes with wordlists | `john --wordlist=commonpasswords.txt hash.txt` |
 | [CVE.org](https://www.cve.org/) | Look up known vulnerabilities | Search `CVE-2021-44228` |
 
 **Tips:** Identify before cracking · Common wordlists first · Strong hashes may be infeasible
@@ -73,7 +73,7 @@
 ## OSINT
 | Tool | Does | Example |
 |---|---|---|
-| [Google operators](https://ahrefs.com/blog/google-advanced-search-operators/) | Refine searches | `site:example.com filetype:pdf` |
+| [Google operators](https://ahrefs.com/blog/google-advanced-search-operators/) | aka Dorking. Refine searches | `site:example.com filetype:pdf` |
 | [OSINT Framework](https://osintframework.com/) | Directory of OSINT tools | Browse by data type |
 
 **Tips:** Quote exact phrases · Verify sources
