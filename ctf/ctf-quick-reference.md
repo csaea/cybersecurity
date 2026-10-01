@@ -1,4 +1,4 @@
-This Quick Reference is based on CyLab Security Academy's General Skills in CTFs.
+This Quick Reference is based on CyLab Security Academy easy to medium challenges.
 Refer to [CTF-Resources](ctf-resources) for online tools.
 
 **Navigation**
@@ -8,14 +8,16 @@ Refer to [CTF-Resources](ctf-resources) for online tools.
 | `cd` | Enter dir, go up (`..`), root (`/`), home (`~`) | `cd /home/kali/Documents` |
 | `pwd` | Show current location | `pwd` → `/home/kali/Downloads` |
 | **Tab** | Autocomplete; press twice to list options | `cd Add` + Tab → `cd Addadshashanammu/` |
+| **↑ / ↓** | Scroll through previous commands to rerun or edit | ↑ → recalls `nc jupiter.challenges.picoctf.org 14291` |
 
 **Files**
 | Command | Does | Example |
 |---|---|---|
-| `cat` | Print a file in Terminal | `cat flag.txt` |
-| `nano` | Edit text (Ctrl+O save, Ctrl+X exit) | `nano calc.py` |
 | `wget` | Download a file | `wget https://example.com/flag` |
+| `cat` | Print a file in Terminal | `cat flag.txt` |
+| `file` | Identify a file's real type, regardless of extension | `file mystery` → `mystery: PNG image data` |
 | `unzip` | Extract an archive | `unzip files.zip` |
+| `nano` | Edit text (Ctrl+O save, Ctrl+X exit) | `nano calc.py` |
 
 **Running programs**
 | Command | Does | Example |
@@ -38,9 +40,12 @@ Refer to [CTF-Resources](ctf-resources) for online tools.
 | Command | Does | Example |
 |---|---|---|
 | `nc` | Connect to a remote service | `nc jupiter.challenges.picoctf.org 14291` |
-| `ssh` | Log into a remote shell | `ssh ctf-player@venus.picoctf.net -p 52218` |
+| `ssh` | Log into a remote shell through a specific port | `ssh ctf-player@venus.picoctf.net -p 52218` |
 
 **Number conversions** (`python3 -c "print(...)"`)
+
+Computers store everything as numbers -- including text. CTF challenges often hide flags as hex, binary, or decimal values that must be converted back to readable characters. `python3 -c "print(...)"` runs one line of Python directly in Terminal as a quick calculator, e.g. `python3 -c "print(chr(112))"` prints `p`.
+
 | Expression | Does | Example → Result |
 |---|---|---|
 | `0x..` | Hex → decimal | `0x3D` → `61` |
